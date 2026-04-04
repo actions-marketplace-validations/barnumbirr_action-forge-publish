@@ -18,24 +18,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Get latest tag
-      id: vars
-      run: echo "{tag}=${GITHUB_REF:10}" >> $GITHUB_OUTPUT
     - name: Clone repository
-      uses: actions/checkout@v4.1.1
-      with:
-        ref: ${{ steps.vars.outputs.tag }}
+      uses: actions/checkout@v4
     - name: Build and publish module
-      uses: barnumbirr/action-forge-publish@v2.15.0
-      env:
-       FORGE_API_KEY: ${{ secrets.FORGE_API_KEY }}
-       REPOSITORY_URL: https://forgeapi.puppet.com/v3/releases
+      uses: barnumbirr/action-forge-publish@v2.16.0
+      with:
+        FORGE_API_KEY: ${{ secrets.FORGE_API_KEY }}
+        # Optional: override for private Forge instances
+        # REPOSITORY_URL: https://your-forge-instance.example.com/v3/releases
 ```
 
 ## License:
 
 ```
-Copyright 2019-2024 Martin Simon
+Copyright 2019-2026 Martin Simon
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

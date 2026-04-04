@@ -6,7 +6,7 @@ LABEL "com.github.actions.icon"="upload-cloud"
 LABEL "com.github.actions.color"="orange"
 
 LABEL "name"="Publish to Puppet Forge"
-LABEL "version"="2.14.0"
+LABEL "version"="2.16.0"
 LABEL "repository"="https://github.com/barnumbirr/action-forge-publish"
 LABEL "maintainer"="Martin Simon <martin@simon.tf>"
 
@@ -15,7 +15,7 @@ RUN apk add --no-cache \
     curl \
     jq
 
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
